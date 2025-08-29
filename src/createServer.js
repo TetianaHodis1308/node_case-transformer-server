@@ -6,7 +6,7 @@ const { convertToCase } = require('./convertToCase/convertToCase');
 
 const createServer = () => {
   const server = http.createServer((req, res) => {
-    if (req.method !== 'GET' || !req.url) {
+    if (!req.url) {
       res.statusCode = 404;
       res.end('Not Found');
 
@@ -48,6 +48,7 @@ const createServer = () => {
 
     if (errors.length > 0) {
       res.statusCode = 400;
+      res.statusMessage = 'Bad Request';
       res.setHeader('Content-Type', 'application/json');
 
       res.end(JSON.stringify({ errors }));
@@ -60,6 +61,7 @@ const createServer = () => {
 
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 200;
+    res.statusMessage = 'OK';
 
     res.end(
       JSON.stringify({
