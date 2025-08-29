@@ -2,7 +2,7 @@ const http = require('http');
 const { detectCase } = require('./convertToCase/detectCase');
 const { convertToCase } = require('./convertToCase/convertToCase');
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 const createServer = () => {
   const server = http.createServer((req, res) => {
@@ -78,4 +78,4 @@ module.exports = {
   createServer,
 };
 
-createServer().listen(PORT);
+// createServer().listen(PORT);
